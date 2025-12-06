@@ -27,8 +27,10 @@ public class LocationManager {
     }
 
     public void getLastLocation(Activity activity, final OnLocationListener listener) {
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(context,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(context,
+                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             listener.onPermissionNeeded();
             return;
         }
@@ -59,7 +61,9 @@ public class LocationManager {
 
     public interface OnLocationListener {
         void onLocationFound(Location location);
+
         void onLocationError(Exception e);
+
         void onPermissionNeeded();
     }
 }

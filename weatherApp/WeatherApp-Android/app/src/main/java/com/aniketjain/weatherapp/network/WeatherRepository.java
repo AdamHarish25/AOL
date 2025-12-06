@@ -24,16 +24,17 @@ public class WeatherRepository {
 
     public void getCityCoordinates(String cityName, final OnCityCoordinatesListener listener) {
         URL.setCity_url(cityName);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL.getCity_url(), null, response -> {
-            try {
-                String lat = response.getJSONObject("coord").getString("lat");
-                String lon = response.getJSONObject("coord").getString("lon");
-                listener.onSuccess(lat, lon);
-            } catch (JSONException e) {
-                e.printStackTrace();
-                listener.onError(e);
-            }
-        }, listener::onError);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL.getCity_url(), null,
+                response -> {
+                    try {
+                        String lat = response.getJSONObject("coord").getString("lat");
+                        String lon = response.getJSONObject("coord").getString("lon");
+                        listener.onSuccess(lat, lon);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        listener.onError(e);
+                    }
+                }, listener::onError);
         requestQueue.add(jsonObjectRequest);
     }
 
@@ -58,11 +59,13 @@ public class WeatherRepository {
 
     public interface OnCityCoordinatesListener {
         void onSuccess(String lat, String lon);
+
         void onError(Exception e);
     }
 
     public interface OnWeatherDataListener {
         void onSuccess(JSONObject response);
+
         void onError(Exception e);
     }
 }

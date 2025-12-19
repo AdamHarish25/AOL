@@ -1,7 +1,6 @@
 package com.aniketjain.weatherapp.toast;
 
 import android.content.Context;
-import android.graphics.Color;
 
 import com.aniketjain.roastedtoast.Toasty;
 import com.aniketjain.weatherapp.R;
@@ -12,9 +11,9 @@ public class Toaster {
                 context,
                 msg,
                 R.drawable.ic_baseline_check_24,
-                "#454B54",
+                context.getResources().getColor(R.color.blockBGColor),
                 14,
-                "#EEEEEE");
+                context.getResources().getColor(R.color.textColor));
     }
 
     public static void errorToast(Context context, String msg) {
@@ -22,8 +21,8 @@ public class Toaster {
                 context,
                 msg,
                 R.drawable.ic_baseline_error_outline_24,
-                "#454B54",
+                context.getResources().getColor(R.color.blockBGColor),
                 14,
-                "#EEEEEE");
+                context.getResources().getColor(R.color.textColor));
     }
 }
